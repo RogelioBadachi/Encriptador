@@ -14,6 +14,15 @@ export default {
 </script>
 
 <style>
+:root{
+    --lightBlue: #f3f5fc;
+  --mediumBlue: #d8dfe8;
+  --darkBlue: #0a3871;
+  --lightGrey: #d8dfe8;
+  --grey: #495057;
+  --darkGrey: #343a40;
+  --red: rgb(182, 65, 65);
+}
 html {
   margin: 0;
   padding: 0;

@@ -100,5 +100,66 @@ border-radius: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap:0.5rem;
+  color:gray;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.clear {
+  border: solid 1px var(--red);
+  background-color: var(--red);
+  color: white;
+  padding: 1rem 0;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 100%;
+}
+.clear:hover {
+  background-color: white;
+  color: var(--red);
+}
+.actionButtons {
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.encrypt {
+  border: solid 1px var(--darkBlue);
+  background-color: var(--darkBlue);
+  color: white;
+  padding: 1.3rem 0;
+  border-radius: 24px;
+  font-size: 16px;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 50%;
+}
+.encrypt:hover {
+  background-color: white;
+  color: var(--darkBlue);
+}
+.decrypt {
+  border: solid 1px var(--grey);
+  background-color: var(--mediumBlue);
+  color: var(--grey);
+  padding: 1.3rem 0;
+  border-radius: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 50%;
+}
+.decrypt:hover {
+  background-color: var(--grey);
+  color: white;
 }
 </style>
