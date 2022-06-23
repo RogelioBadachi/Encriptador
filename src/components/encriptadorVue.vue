@@ -23,7 +23,12 @@
               <button class="encrypt" @click="encryptData">Encriptar</button>
               <button class="decrypt" @click="decryptData">Desencriptar</button>
             </div>
-          </div>  
+            <div id="app">	
+              <p>{{myStr}}</p>
+              <p>{{myStr2}}</p>
+              <button @click="myFunction()">Click Me</button>
+            </div>
+        </div>  
       </div> <!--Aqui termina inputText-->
     </div>
     <div class="whiteBox">
@@ -34,13 +39,29 @@
       </div>
     </div>
   </div>
+  
 
 </template>
 
 <script>
 export default {
   
-}
+
+  
+  data() { 
+    return{
+      myStr: "Hello World!",
+      myStr2:"",
+      inputData:""
+    }
+  },
+  methods:{
+    myFunction: function () {	
+      this.myStr2 = this.myStr.toLowerCase();
+    }
+  }
+
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
