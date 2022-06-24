@@ -23,19 +23,15 @@
               <button class="encrypt" @click="encryptData">Encriptar</button>
               <button class="decrypt" @click="decryptData">Desencriptar</button>
             </div>
-            <div id="app">	
-              <p>{{myStr}}</p>
-              <p>{{myStr2}}</p>
-              <button @click="myFunction()">Click Me</button>
-            </div>
         </div>  
       </div> <!--Aqui termina inputText-->
     </div>
     <div class="whiteBox">
       <div class="outputText">
-        <img src="../assets/doll.png" alt="doll image">
-        <h2>Ningún mensaje fue encontrado</h2>
-        <h3>Ingresa el texto que deseas Encriptar o Desencriptar</h3>
+        <img src="../assets/doll.png" class ="imageOutput" alt="doll image">
+        <h2>{{notif}}</h2>
+        <h3 ref="outputMessage">{{message}}</h3>
+        <button class="copy" @click="copy">Copiar</button>
       </div>
     </div>
   </div>
@@ -50,15 +46,71 @@ export default {
   
   data() { 
     return{
-      myStr: "Hello World!",
-      myStr2:"",
-      inputData:""
+      inputData:"",
+      notif:"Ningún mensaje fue encontrado",
+      message:"Ingresa el texto que deseas Encriptar o Desencriptar",
+      message1: "",
+      message2: "",
+      message3: "",
+      message4: "",
+      message5: "",
+      message6:""
+
     }
   },
   methods:{
-    myFunction: function () {	
-      this.myStr2 = this.myStr.toLowerCase();
-    }
+    formatting: function(){
+      if( this.inputData == ""){
+        
+        this.message = "Ingresa el texto que deseas Encriptar o Desencriptar";
+      }else{
+        
+        this.message = this.message5;
+        this.notif = "Mensaje Encriptado";
+      }
+    },
+    clearData: function() {
+      this.inputData = "";
+      this.notif = "Ningún mensaje fue encontrado";
+      this.message = "Ingresa el texto que deseas Encriptar o Desencriptar"
+    },
+    encryptData: function () {
+      this.inputData = this.inputData.toLowerCase();
+      this.message1 = this.inputData.replaceAll("a", "ai")
+      this.message2 = this.message1.replaceAll("e","enter")
+      this.message3 = this.message2.replaceAll("i","imes")
+      this.message4 = this.message3.replaceAll("o", "ober")
+      this.message5 = this.message4.replaceAll("u","ufat")
+      this.formatting()
+      //this.imageOutput = hidden;
+    },
+    decryptData: function (){
+      this.inputData = this.inputData.toLowerCase();
+      this.message1 = this.inputData.replaceAll("ai", "a")
+      this.message2 = this.message1.replaceAll("enter","e")
+      this.message3 = this.message2.replaceAll("imes","i")
+      this.message4 = this.message3.replaceAll("ober", "o")
+      this.message5 = this.message4.replaceAll("ufat","u")
+      this.message6 = this.message5.replaceAll("mes", "")
+      this.message = this.message6;
+      if( this.message == ""){
+        this.message = "Ingresa el texto que deseas Encriptar o Desencriptar";
+      }else{
+        this.message = this.message6;
+        this.notif = "Mensaje Desencriptado"
+      }
+    },
+    copyCode: async function (e) {
+            this.message = e.target.value;
+            
+            const copyText = await this.$refs.outputMessage
+            copyText.select()
+            document.execCommand("copy")
+            //this.cStype = 'hidden';
+        },
+    
+    
+    
   }
 
 };
@@ -182,5 +234,17 @@ border-radius: 32px;
 .decrypt:hover {
   background-color: var(--grey);
   color: white;
+}
+.copy{
+  border: solid 1px var(--darkBlue);
+  background-color: var(--darkBlue);
+  color: white;
+  padding: 1.3rem 0;
+  border-radius: 24px;
+  font-size: 16px;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 50%;
 }
 </style>
