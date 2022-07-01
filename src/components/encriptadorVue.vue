@@ -105,7 +105,7 @@ export default {
             
             const copyText = await this.$refs.outputMessage
             copyText.select()
-            document.execCommand("copy")
+            document.execCommand('copy');
             //this.cStype = 'hidden';
         },
     
