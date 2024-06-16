@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div class="clark">
+    <div class="bada">
       <div class="logo">
         <img alt="Vue logo" src="../assets/logo.png">
       </div>
@@ -31,7 +31,7 @@
         <img src="../assets/doll.png" class ="imageOutput" alt="doll image">
         <h2>{{notif}}</h2>
         <h3 ref="outputMessage">{{message}}</h3>
-        <button class="copy" @click="copy">Copiar</button>
+        <button class="copy" @click="copyText">Copiar</button>
       </div>
     </div>
   </div>
@@ -100,12 +100,15 @@ export default {
         this.notif = "Mensaje Desencriptado"
       }
     },
-    copyCode: async function (e) {
-            this.message = e.target.value;
-            
-            const copyText = await this.$refs.outputMessage
-            copyText.select()
-            document.execCommand('copy');
+    copyText: function() {
+            //this.message = e.target.value;
+            const textToCopy = this.$refs.outputMessage.innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                console.log('Text copied to clipboard');
+            })
+            .catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
             //this.cStype = 'hidden';
         },
     
@@ -163,7 +166,7 @@ border-radius: 32px;
   font-size: 32px;
   color: var(--darkBlue);
 }
-.clark{
+.bada{
   width: 70vw;
   height: 100vh;
   display: flex;
